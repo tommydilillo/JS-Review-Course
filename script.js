@@ -271,6 +271,7 @@ if (height == '23') {
  * Coding Challenge 2
  */
 
+/*
 var johnAvg = (89 + 120 + 103) / 3;
 var mikeAvg = (116 + 94 + 123) / 3;
 var maryAvg = (97 + 134 + 105) / 3;
@@ -278,11 +279,146 @@ console.log(johnAvg, mikeAvg, maryAvg);
 
 
 if (johnAvg > mikeAvg && johnAvg > maryAvg) {
-    console.log('John Wins with ' + johnAvg + ' points');
+   console.log('John Wins with ' + johnAvg + ' points');
 } else if (mikeAvg > johnAvg && mikeAvg > maryAvg) {
-    console.log('Mike Wins with ' + mikeAvg + ' points');
+   console.log('Mike Wins with ' + mikeAvg + ' points');
 } else if (maryAvg > johnAvg && maryAvg > mikeAvg) {
-    console.log('Mary Wins with ' + maryAvg + ' points');
+   console.log('Mary Wins with ' + maryAvg + ' points');
 } else {
-    console.log('It\'s a tie!');
+   console.log('It\'s a tie!');
 }
+*/
+
+
+/************
+ * Functions
+ */
+
+/*
+function calculateAge(birthYear) {
+   return 2018 - birthYear;
+}
+
+var ageJohn = calculateAge(1990);
+var ageMike = calculateAge(1948);
+var ageJane = calculateAge(1969);
+
+console.log(ageJohn, ageMike, ageJane);
+
+function yearsUntilRetirement(year, firstName) {
+   var age = calculateAge(year);
+   var retirement = 65 - age;
+
+   if (retirement > 0) {
+       console.log(firstName + ' retires in ' + retirement + ' years.');
+   } else {
+       console.log(firstName + 'is already at retirement age');
+   }
+}
+
+yearsUntilRetirement(1990, 'John');
+yearsUntilRetirement(1948, 'Mike');
+yearsUntilRetirement(1969, 'Jane');
+*/
+
+/************
+ * Function Statements and Expressions
+ */
+
+// Function declaration
+// function whatDoYouDo(job, firstName) { }
+
+// Function expression
+/*var whatDoYouDo = function (job, firstName) {
+    switch (job) {
+        case 'teacher':
+            return firstName + ' teaches kids how to code';
+        case 'driver':
+            return firstName + ' drives a cab in Lisbon';
+        case 'designer':
+            return firstName + ' designs beautiful websites';
+        default:
+            return firstName + ' does something else';
+    }
+}
+
+console.log(whatDoYouDo('teacher', 'John'));
+console.log(whatDoYouDo('designer', 'Jane'));
+console.log(whatDoYouDo('retired', 'Mark'));
+*/
+
+/************
+ * Function Statements and Expressions
+ */
+
+
+// Initialize new array
+/*var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1969, 1948);
+
+console.log(names[2]);
+console.log(names.length);
+
+// Mutate array date
+names[1] = 'Ben';
+names[names.length] = 'Mary';
+console.log(names);
+
+// Different data types 
+var john = ['John', 'Smith', 1990, 'teacher', 'false'];
+
+john.push('blue');
+john.unshift('Mr.');
+console.log(john);
+john.pop();
+john.pop();
+john.shift();
+console.log(john);
+
+console.log(john.indexOf(23));
+
+var isDesigner = john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John is a designer'
+console.log(isDesigner);
+*/
+
+/************
+ * CODING CHALLENGE 
+ */
+let tips = [];
+let finalPaid = [];
+
+bills = [124, 48, 268];
+
+
+function calculateTip(bill) {
+    var percentage;
+    if (bill < 50) {
+        percentage = .2;
+    } else if (bill >= 50 && bill <= 200) {
+        percentage = .15;
+    } else {
+        percentage = .1;
+    }
+    return bill * percentage;
+}
+
+const tip1 = calculateTip(bills[0]);
+const tip2 = calculateTip(bills[1]);
+const tip3 = calculateTip(bills[2]);
+tips.push(tip1);
+tips.push(tip2);
+tips.push(tip3);
+
+function calculateTotal(bill, tip) {
+    return bill + tip;
+}
+
+finalPaid.push(calculateTotal(bills[0], tip1));
+finalPaid.push(calculateTotal(bills[1], tip2));
+finalPaid.push(calculateTotal(bills[2], tip3));
+
+console.log(tips);
+console.log(finalPaid);
+
+
+
