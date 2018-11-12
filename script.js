@@ -382,8 +382,10 @@ console.log(isDesigner);
 */
 
 /************
- * CODING CHALLENGE 
+ * CODING CHALLENGE 3
  */
+
+/*
 let tips = [];
 let finalPaid = [];
 
@@ -391,15 +393,15 @@ bills = [124, 48, 268];
 
 
 function calculateTip(bill) {
-    var percentage;
-    if (bill < 50) {
-        percentage = .2;
-    } else if (bill >= 50 && bill <= 200) {
-        percentage = .15;
-    } else {
-        percentage = .1;
-    }
-    return bill * percentage;
+   var percentage;
+   if (bill < 50) {
+       percentage = .2;
+   } else if (bill >= 50 && bill <= 200) {
+       percentage = .15;
+   } else {
+       percentage = .1;
+   }
+   return bill * percentage;
 }
 
 const tip1 = calculateTip(bills[0]);
@@ -410,7 +412,7 @@ tips.push(tip2);
 tips.push(tip3);
 
 function calculateTotal(bill, tip) {
-    return bill + tip;
+   return bill + tip;
 }
 
 finalPaid.push(calculateTotal(bills[0], tip1));
@@ -420,5 +422,91 @@ finalPaid.push(calculateTotal(bills[2], tip3));
 console.log(tips);
 console.log(finalPaid);
 
+*/
 
+/************
+ * Objects and properties
+ */
+
+/*
+// Object literal
+var john = {
+   firstName: 'John',
+   lastName: 'Smith',
+   birthYear: 1990,
+   family: ['Jane', 'Mark', 'Bob', 'Emily'],
+   job: 'teacher',
+   isMarried: false
+};
+
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
+
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
+
+// new Object syntax
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
+*/
+
+/************
+ * Objects and properties
+ */
+
+/*
+var john = {
+   firstName: 'John',
+   lastName: 'Smith',
+   birthYear: 1992,
+   family: ['Jane', 'Mark', 'Bob', 'Emily'],
+   job: 'teacher',
+   isMarried: false,
+   calcAge: function () {
+       this.age = 2018 - this.birthYear;
+   }
+};
+
+john.calcAge();
+console.log(john);
+*/
+
+/************
+ * CODING CHALLENGE 4
+ */
+
+john = {
+    fullName: 'John Bon Jovi',
+    mass: 80, // kg
+    height: 2, // meters
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+};
+
+mark = {
+    fullName: 'Mark Emark',
+    mass: 70, // kg
+    height: 2, // meters
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+};
+
+
+if (john.calcBMI() > mark.calcBMI()) {
+    console.log(`John has the higher BMI of ${john.BMI}, compared to Mark's BMI of ${mark.BMI}`);
+} else if (john.BMI < mark.BMI) {
+    console.log(`Mark has the higher BMI of ${mark.BMI}, compared to John's BMI of ${john.BMI}`);
+} else {
+    console.log(`Mark and John have the same BMI of ${mark.BMI} = ${john.BMI}`);
+}
 
