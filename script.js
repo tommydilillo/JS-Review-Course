@@ -481,32 +481,165 @@ console.log(john);
  * CODING CHALLENGE 4
  */
 
+/*
 john = {
-    fullName: 'John Bon Jovi',
-    mass: 80, // kg
-    height: 2, // meters
-    calcBMI: function () {
-        this.BMI = this.mass / (this.height * this.height);
-        return this.BMI;
-    }
+   fullName: 'John Bon Jovi',
+   mass: 80, // kg
+   height: 2, // meters
+   calcBMI: function () {
+       this.BMI = this.mass / (this.height * this.height);
+       return this.BMI;
+   }
 };
 
 mark = {
-    fullName: 'Mark Emark',
-    mass: 70, // kg
-    height: 2, // meters
-    calcBMI: function () {
-        this.BMI = this.mass / (this.height * this.height);
-        return this.BMI;
-    }
+   fullName: 'Mark Emark',
+   mass: 70, // kg
+   height: 2, // meters
+   calcBMI: function () {
+       this.BMI = this.mass / (this.height * this.height);
+       return this.BMI;
+   }
 };
 
 
 if (john.calcBMI() > mark.calcBMI()) {
-    console.log(`John has the higher BMI of ${john.BMI}, compared to Mark's BMI of ${mark.BMI}`);
+   console.log(`John has the higher BMI of ${john.BMI}, compared to Mark's BMI of ${mark.BMI}`);
 } else if (john.BMI < mark.BMI) {
-    console.log(`Mark has the higher BMI of ${mark.BMI}, compared to John's BMI of ${john.BMI}`);
+   console.log(`Mark has the higher BMI of ${mark.BMI}, compared to John's BMI of ${john.BMI}`);
 } else {
-    console.log(`Mark and John have the same BMI of ${mark.BMI} = ${john.BMI}`);
+   console.log(`Mark and John have the same BMI of ${mark.BMI} = ${john.BMI}`);
+}
+*/
+
+/************
+ * loops and iteration
+ */
+
+// For Loop
+/*
+for (var i = 1; i <= 20; i += 2) {
+    console.log(i);
 }
 
+
+var john = ['John', 'Smith', 1990, 'teacher', 'false'];
+
+for (var i = 0; i < john.length; i++) {
+    console.log(john[i]);
+}
+
+// While loop
+var i = 0;
+while (i < john.length) {
+    console.log(john[i]);
+    i++;
+}
+*/
+
+// continue and break statements 
+
+/*
+var john = ['John', 'Smith', 1990, 'teacher', false, 'blue'];
+
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') continue;
+    console.log(john[i]);
+}
+
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') break;
+    console.log(john[i]);
+}
+
+// Looping backwards
+for (var i = john.length - 1; i >= 0; i--) {
+    console.log(john[i]);
+}
+*/
+
+/************
+ * CODING CHALLENGE 5
+ */
+
+john = {
+    fullName: 'John Bon Jovi',
+    bills: [124, 48, 268, 180, 42],
+    calcTip: function () {
+        this.tips = [];
+        this.totalBill = [];
+        for (var i = 0; i < this.bills.length; i++) {
+            // Determint percentage based on tipping rules
+            var percentage;
+            var bill = this.bills[i];
+
+            if (bill < 50) {
+                percentage = .2;
+            } else if (bill >= 50 && bill <= 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+
+            // Add results to the corresponding arrays
+            this.tips[i] = bill * percentage;
+            this.totalBill[i] = bill + bill * percentage;
+        }
+    }
+}
+
+
+mark = {
+    fullName: 'Mark Emark',
+    bills: [77, 375, 110, 45],
+    calcTip: function () {
+        this.tips = [];
+        this.totalBill = [];
+        for (var i = 0; i < this.bills.length; i++) {
+            // Determint percentage based on tipping rules
+            var percentage;
+            var bill = this.bills[i];
+            if (bill < 100) {
+                percentage = .2;
+            } else if (bill >= 100 && bill <= 300) {
+                percentage = .15;
+            } else {
+                percentage = .25;
+            }
+            // Add results to the corresponding arrays
+            this.tips[i] = bill * percentage;
+            this.totalBill[i] = bill + bill * percentage;
+        }
+    }
+}
+
+
+
+function averageTip(tipsArray) {
+    let sum = 0;
+    for (var i = 0; i < tipsArray.length; i++) {
+        sum += tipsArray[i];
+    }
+    return sum / tipsArray.length;
+
+}
+
+john.calcTip();
+mark.calcTip();
+
+john.average = averageTip(john.tips);
+mark.average = averageTip(mark.tips);
+
+console.log(`John's avg tip: ${john.average}`);
+console.log(`Mark's avg tip: ${mark.average}`);
+
+console.log(john, mark);
+
+
+if (john.average > mark.average) {
+    console.log(`John's avg tip of ${john.average} is greater than Mark's at ${mark.average}`)
+} else if (john.average < mark.average) {
+    console.log(`Mark's avg tip of ${mark.average} is greater than John's at ${john.average}`)
+} else {
+    console.log(`Mark and john tip the same: $${mark.average}`);
+}
