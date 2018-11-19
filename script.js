@@ -562,65 +562,66 @@ for (var i = john.length - 1; i >= 0; i--) {
  * CODING CHALLENGE 5
  */
 
+/*
 john = {
-    fullName: 'John Bon Jovi',
-    bills: [124, 48, 268, 180, 42],
-    calcTip: function () {
-        this.tips = [];
-        this.totalBill = [];
-        for (var i = 0; i < this.bills.length; i++) {
-            // Determint percentage based on tipping rules
-            var percentage;
-            var bill = this.bills[i];
+   fullName: 'John Bon Jovi',
+   bills: [124, 48, 268, 180, 42],
+   calcTip: function () {
+       this.tips = [];
+       this.totalBill = [];
+       for (var i = 0; i < this.bills.length; i++) {
+           // Determint percentage based on tipping rules
+           var percentage;
+           var bill = this.bills[i];
 
-            if (bill < 50) {
-                percentage = .2;
-            } else if (bill >= 50 && bill <= 200) {
-                percentage = .15;
-            } else {
-                percentage = .1;
-            }
+           if (bill < 50) {
+               percentage = .2;
+           } else if (bill >= 50 && bill <= 200) {
+               percentage = .15;
+           } else {
+               percentage = .1;
+           }
 
-            // Add results to the corresponding arrays
-            this.tips[i] = bill * percentage;
-            this.totalBill[i] = bill + bill * percentage;
-        }
-    }
+           // Add results to the corresponding arrays
+           this.tips[i] = bill * percentage;
+           this.totalBill[i] = bill + bill * percentage;
+       }
+   }
 }
 
 
 mark = {
-    fullName: 'Mark Emark',
-    bills: [77, 375, 110, 45],
-    calcTip: function () {
-        this.tips = [];
-        this.totalBill = [];
-        for (var i = 0; i < this.bills.length; i++) {
-            // Determint percentage based on tipping rules
-            var percentage;
-            var bill = this.bills[i];
-            if (bill < 100) {
-                percentage = .2;
-            } else if (bill >= 100 && bill <= 300) {
-                percentage = .15;
-            } else {
-                percentage = .25;
-            }
-            // Add results to the corresponding arrays
-            this.tips[i] = bill * percentage;
-            this.totalBill[i] = bill + bill * percentage;
-        }
-    }
+   fullName: 'Mark Emark',
+   bills: [77, 375, 110, 45],
+   calcTip: function () {
+       this.tips = [];
+       this.totalBill = [];
+       for (var i = 0; i < this.bills.length; i++) {
+           // Determint percentage based on tipping rules
+           var percentage;
+           var bill = this.bills[i];
+           if (bill < 100) {
+               percentage = .2;
+           } else if (bill >= 100 && bill <= 300) {
+               percentage = .15;
+           } else {
+               percentage = .25;
+           }
+           // Add results to the corresponding arrays
+           this.tips[i] = bill * percentage;
+           this.totalBill[i] = bill + bill * percentage;
+       }
+   }
 }
 
 
 
 function averageTip(tipsArray) {
-    let sum = 0;
-    for (var i = 0; i < tipsArray.length; i++) {
-        sum += tipsArray[i];
-    }
-    return sum / tipsArray.length;
+   let sum = 0;
+   for (var i = 0; i < tipsArray.length; i++) {
+       sum += tipsArray[i];
+   }
+   return sum / tipsArray.length;
 
 }
 
@@ -637,9 +638,140 @@ console.log(john, mark);
 
 
 if (john.average > mark.average) {
-    console.log(`John's avg tip of ${john.average} is greater than Mark's at ${mark.average}`)
+   console.log(`John's avg tip of ${john.average} is greater than Mark's at ${mark.average}`)
 } else if (john.average < mark.average) {
-    console.log(`Mark's avg tip of ${mark.average} is greater than John's at ${john.average}`)
+   console.log(`Mark's avg tip of ${mark.average} is greater than John's at ${john.average}`)
 } else {
-    console.log(`Mark and john tip the same: $${mark.average}`);
+   console.log(`Mark and john tip the same: $${mark.average}`);
 }
+*/
+
+/************
+ *  
+ */
+
+
+
+/*************************************
+* ****  SECTION 3 how-js-works
+*/
+
+///////////////////////////////////////
+// Lecture: Hoisting
+
+/*
+// functions
+calculateAge(1990);
+
+function calculateAge(year) {
+    console.log(2016 - year);
+}
+// retirement(1990);
+
+var retirement = function (year) {
+    console.log(65 - (2016 - year));
+}
+
+retirement(1990);
+
+
+// variables
+
+console.log(age);
+var age = 23;
+console.log(age);
+
+function foo() {
+    console.log(age);
+    var age = 65;
+    console.log(age);
+}
+
+foo();
+console.log(age);
+*/
+
+
+///////////////////////////////////////
+// Lecture: Scoping
+
+
+// First scoping example
+
+/*
+var a = 'Hello!';
+first();
+
+function first() {
+    var b = 'Hi!';
+    second();
+
+    function second() {
+        var c = 'Hey!';
+        console.log(a + b + c);
+    }
+}
+
+*/
+
+
+// Example to show the differece between execution stack and scope chain
+
+/*
+var a = 'Hello!';
+first();
+
+function first() {
+    var b = 'Hi!';
+    second();
+
+    function second() {
+        var c = 'Hey!';
+        third()
+    }
+}
+
+function third() {
+    var d = 'John';
+    // console.log(a + b + c + d);
+    console.log(a + d);
+}
+*/
+
+
+
+///////////////////////////////////////
+// Lecture: The this keyword
+/*
+calculateAge(1985);
+
+function calculateAge(year) {
+    console.log(2016 - year);
+    console.log(this);
+}
+*/
+var john = {
+    name: 'John',
+    yearofBirth: 1990,
+    calculateAge: function () {
+        console.log(this);
+        console.log(2016 - this.yearofBirth);
+        /*
+        // this=window, does not point to the object since it's not directly attached. This is only assigned when an object calls a method.
+        function innerFunction() {
+            console.log(this);
+        }
+        innerFunction();
+        */
+    }
+}
+
+john.calculateAge();
+
+var mike = {
+    name: 'Mike',
+    yearofBirth: 1984
+}
+
+mike.calculateAge = john.calculateAge;
+mike.calculateAge();
